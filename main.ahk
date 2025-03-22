@@ -7,7 +7,7 @@ global debugInfo := ""
 
 ^+e::ToggleScript()  ; Ctrl+Shift+E to toggle
 ^+r::Reload  ; Ctrl+Shift+R to reload
-^+q::ExitApp  ; Escape to exit
+^+q::ExitApp  ; Ctrl+Shift+Q to exit
 
 ToggleScript() {
     global isRunning, debugInfo
