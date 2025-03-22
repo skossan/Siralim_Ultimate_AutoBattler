@@ -1,5 +1,5 @@
 # Siralim_Ultimate_AutoBattler
-This is a simple script that will auto battle for you even when the game windows is not in focus.
+This is a simple script that will auto battle for you even when the game window is not in focus.
 
 #### The script will send the E key to the game window.
 - You can **toggle** the script on/off with **CTRL + SHIFT + E**
