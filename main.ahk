@@ -23,7 +23,7 @@ CreateGui()
 ; Function to create the GUI
 CreateGui() {
     global statusGui
-    statusGui := Gui("+AlwaysOnTop")
+    statusGui := Gui("+MinimizeBox")
     statusGui.Add("Text", "w300 h30 Center c000000", "Siralim Ultimate AutoBattle")  ; Static text at the top
     statusGui.Add("Text", "vStatusText w300 h30 Center")                             ; Status text below static text
     
