@@ -11,7 +11,11 @@ The script will look for a process running on the PC called *SiralimUltimate.exe
 
 If the process is found and you enable the script it will automatically send keystrokes for the letter *E* over and over to that process. This *simulates* holding E and enables you to do other things while the game presses E for you.
 
-If the script can't find the process you will see an error message stating that the game isn't running.0
+If the script can't find the process you will see an error message stating that the game isn't running.
+
+## Why does the script get stuck during combat?
+This is how the game is designed and the script is not at fault. To get the most out of this script you want to use **macros**. Set up your conditions using the macro editor then set *macro* as your default option.
+If your macros gets stuck then manual input is required.
 
 ## Screenshots
 
