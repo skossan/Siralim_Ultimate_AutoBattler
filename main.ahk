@@ -37,5 +37,5 @@ SendE() {
 
 ShowToolTip(message) {
     ToolTip(message)
-    SetTimer () => ToolTip(), -1000  ; Hide tooltip after 1 seconds
+    SetTimer () => ToolTip(), -500  ; Hide tooltip after .5 seconds
 }
