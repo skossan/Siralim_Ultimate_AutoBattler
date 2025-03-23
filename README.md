@@ -15,5 +15,7 @@ This is what the script looks like
 
 ### How does the script work?
 The script will look for a process running on the PC called *SiralimUltimate.exe*.
-If the process is found and you enable the script it will automatically send keystrokes for the letter *E* over and over to that process.
-If the script can't find the process you will see an error message stating that the game isn't running.
+
+If the process is found and you enable the script it will automatically send keystrokes for the letter *E* over and over to that process. This *simulates* holding E and enables to you do other things while the game presses E for you.
+
+If the script can't find the process you will see an error message stating that the game isn't running.0
