@@ -9,7 +9,7 @@ This is a simple script that will auto battle for you even when the game window 
 ## How does the script work?
 The script will look for a process running on the PC called *SiralimUltimate.exe*.
 
-If the process is found and you enable the script it will automatically send keystrokes for the letter *E* over and over to that process. This *simulates* holding E and enables to you do other things while the game presses E for you.
+If the process is found and you enable the script it will automatically send keystrokes for the letter *E* over and over to that process. This *simulates* holding E and enables you to do other things while the game presses E for you.
 
 If the script can't find the process you will see an error message stating that the game isn't running.0
 
