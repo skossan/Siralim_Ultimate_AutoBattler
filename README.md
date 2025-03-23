@@ -1,4 +1,4 @@
-# Siralim_Ultimate_AutoBattler
+# Siralim Ultimate AutoBattler
 This is a simple script that will auto battle for you even when the game window is not in focus.
 
 ## How to use the script
