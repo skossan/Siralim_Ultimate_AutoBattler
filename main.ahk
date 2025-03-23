@@ -10,26 +10,60 @@ TARGET_WINDOW := "ahk_exe SiralimUltimate.exe"
 
 ; Globals
 global isRunning := false
+global statusGui := {}
+
+; Create the GUI
+CreateGui()
 
 ; Hotkeys
-^+e::ToggleKeySending()  ; Ctrl+Shift+E to toggle
-^+r::Reload              ; Ctrl+Shift+R to reload
-^+q::ExitApp             ; Ctrl+Shift+Q to exit
+^+e::ToggleScript()  ; Ctrl+Shift+E to toggle
+^+r::Reload  ; Ctrl+Shift+R to reload
+^+q::ExitApp  ; Ctrl+Shift+Q to exit
 
-; Toggles the script on/off
-ToggleKeySending() {
-    global isRunning
-    static timerInterval := 100  ; Timer interval in ms
+; Function to create the GUI
+CreateGui() {
+    global statusGui
+    statusGui := Gui("+AlwaysOnTop")
+    statusGui.Add("Text", "vStatusText w100 h30 Center")
+    statusGui.Add("Button", "w100", "Toggle Script").OnEvent("Click", ToggleScript)
+    statusGui.Add("Button", "w100", "Quit").OnEvent("Click", QuitScript)
+    statusGui.OnEvent("Close", (*) => ExitApp())
+    statusGui.Title := "Script Control"
+    statusGui.Show("NoActivate x10 y10")
+    UpdateStatusGui("Inactive")
     
+    ; Make the GUI moveable
+    statusGui.OnEvent("Size", (*) => {})
+    OnMessage(0xA1, (*) => SendMessage(0xA1, 2))
+}
+
+; Function to update the status GUI
+UpdateStatusGui(status) {
+    if (statusGui) {
+        statusGui["StatusText"].Value := status
+        statusGui["StatusText"].Opt(status == "Active" ? "cGreen" : "cRed")
+    }
+}
+
+; Toggle script function
+ToggleScript(*) {
+    global isRunning
     isRunning := !isRunning
     
     if (isRunning) {
-        SetTimer SendKeyToWindow, timerInterval
+        SetTimer SendKeyToWindow, 100
+        UpdateStatusGui("Active")
         ShowToolTip("Script activated")
     } else {
         SetTimer SendKeyToWindow, 0
+        UpdateStatusGui("Inactive")
         ShowToolTip("Script deactivated")
     }
+}
+
+; Quit script function
+QuitScript(*) {
+    ExitApp()
 }
 
 ; Sends the 'E' key to the target window
@@ -38,17 +72,19 @@ SendKeyToWindow() {
         try {
             SendVirtualKey(VK_E)
         } catch as err {
+            UpdateStatusGui("Error: " . err.Message)
             ShowToolTip("Error sending key: " . err.Message)
         }
     } else {
+        UpdateStatusGui("Window not found")
         ShowToolTip("Siralim Ultimate window not found")
     }
 }
 
 ; Sends a virtual key using PostMessage
 SendVirtualKey(vkCode) {
-    PostMessage WM_KEYDOWN, vkCode, 0, , TARGET_WINDOW  ; Key down
-    PostMessage WM_KEYUP, vkCode, 0, , TARGET_WINDOW    ; Key up
+    PostMessage WM_KEYDOWN, vkCode, 0, , TARGET_WINDOW
+    PostMessage WM_KEYUP, vkCode, 0, , TARGET_WINDOW
 }
 
 ; Displays a tooltip message briefly
