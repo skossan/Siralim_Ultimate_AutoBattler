@@ -7,6 +7,8 @@ This is a simple script that will auto battle for you even when the game window 
 - You can **exit** the script with **CTRL + SHIFT + Q**
 
 This is what the script looks like
+
 ![image](https://github.com/user-attachments/assets/e88d76b9-6128-4953-9ee1-0a9338b07adc)
+
 ![image](https://github.com/user-attachments/assets/bd691579-1d7f-416f-af7d-315ac88054c1)
 
