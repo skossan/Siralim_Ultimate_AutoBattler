@@ -24,12 +24,16 @@ CreateGui()
 CreateGui() {
     global statusGui
     statusGui := Gui("+AlwaysOnTop")
-    statusGui.Add("Text", "vStatusText w100 h30 Center")
-    statusGui.Add("Button", "w100", "Toggle Script").OnEvent("Click", ToggleScript)
-    statusGui.Add("Button", "w100", "Quit").OnEvent("Click", QuitScript)
+    statusGui.Add("Text", "w300 h30 Center c000000", "Siralim Ultimate AutoBattle")  ; Static text at the top
+    statusGui.Add("Text", "vStatusText w300 h30 Center")                             ; Status text below static text
+    
+    ; Place buttons horizontally using x and y positioning
+    statusGui.Add("Button", "x10 y80 w140 h30", "Toggle Script").OnEvent("Click", ToggleScript)  ; First button at x10, y80
+    statusGui.Add("Button", "x160 y80 w140 h30", "Quit").OnEvent("Click", QuitScript)           ; Second button at x160, y80
+    
     statusGui.OnEvent("Close", (*) => ExitApp())
-    statusGui.Title := "Script Control"
-    statusGui.Show("NoActivate x10 y10")
+    statusGui.Title := "AutoBattle"
+    statusGui.Show("NoActivate x10 y10 w320 h150")  ; Adjusted window size for layout
     UpdateStatusGui("Inactive")
     
     ; Make the GUI moveable
